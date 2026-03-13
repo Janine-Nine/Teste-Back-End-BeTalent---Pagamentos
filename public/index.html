@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<title>BeTalent Payments API</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>💳 BeTalent Payments API</h1>
+<p>Painel de teste da API Multi-Gateway</p>
+</header>
+
+<main class="container">
+
+<div class="card">
+<h2>Status da API</h2>
+<button onclick="checkApi()">Verificar</button>
+<pre id="status"></pre>
+</div>
+
+<div class="card">
+
+<h2>Login</h2>
+
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Senha">
+
+<button onclick="login()">Login</button>
+
+<pre id="loginResponse"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Produtos</h2>
+
+<button onclick="listarProdutos()">Listar Produtos</button>
+
+<pre id="produtos"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Compra</h2>
+
+<input id="clientId" placeholder="ID Cliente">
+<input id="productId" placeholder="ID Produto">
+<input id="quantity" placeholder="Quantidade">
+
+<input id="cardNumber" placeholder="Número do Cartão">
+<input id="cvv" placeholder="CVV">
+
+<button onclick="comprar()">Comprar</button>
+
+<pre id="purchaseResponse"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Clientes</h2>
+
+<button onclick="listarClientes()">Listar Clientes</button>
+
+<input id="clientDetailId" placeholder="ID Cliente">
+<button onclick="detalheCliente()">Detalhe Cliente</button>
+
+<pre id="clientes"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Transações</h2>
+
+<button onclick="listarTransacoes()">Listar</button>
+
+<input id="transactionId" placeholder="ID Transação">
+<button onclick="detalheTransacao()">Detalhe</button>
+
+<pre id="transactions"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Reembolso</h2>
+
+<input id="refundId" placeholder="ID Transação">
+
+<button onclick="refund()">Reembolsar</button>
+
+<pre id="refundResponse"></pre>
+
+</div>
+
+<div class="card">
+
+<h2>Gateways</h2>
+
+<input id="gatewayId" placeholder="ID Gateway">
+
+<button onclick="ativarGateway()">Ativar / Desativar</button>
+
+<input id="priority" placeholder="Nova prioridade">
+
+<button onclick="alterarPrioridade()">Alterar prioridade</button>
+
+<pre id="gatewayResponse"></pre>
+
+</div>
+
+</main>
+
+<footer>
+<p>Projeto Backend — Teste Técnico BeTalent</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

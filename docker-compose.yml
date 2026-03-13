@@ -1,0 +1,89 @@
+version: "3.9"
+
+services:
+
+  api:
+    build: .
+    container_name: betalente_api
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      gateways:
+        condition: service_started
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    networks:
+      - betalente_net
+
+    command: npm run dev
+
+  mysql:
+    image: mysql:8
+    container_name: betalente_mysql
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: betalente
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - betalente_net
+
+  redis:
+    image: redis:7
+    container_name: betalente_redis
+    restart: always
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+
+    networks:
+      - betalente_net
+
+  gateways:
+    image: matheusprotzen/gateways-mock
+    container_name: betalente_gateways
+    restart: always
+
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+
+    networks:
+      - betalente_net
+
+networks:
+  betalente_net:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

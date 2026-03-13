@@ -1,0 +1,76 @@
+{
+  "compilerOptions": {
+
+    /* ========================
+       LINGUAGEM
+    ======================== */
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+
+    /* ========================
+       NODE
+    ======================== */
+    "moduleResolution": "node",
+    "types": ["node"],
+    "resolveJsonModule": true,
+
+    /* ========================
+       ESTRUTURA
+    ======================== */
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+
+    /* ========================
+       PATH ALIASES
+    ======================== */
+    "paths": {
+      "@/*": ["*"],
+      "@controllers/*": ["controllers/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+      "@repositories/*": ["repositories/*"],
+      "@usecases/*": ["usecases/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@config/*": ["config/*"],
+      "@infra/*": ["infra/*"],
+      "@cache/*": ["cache/*"]
+    },
+
+    /* ========================
+       COMPATIBILIDADE
+    ======================== */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* ========================
+       QUALIDADE
+    ======================== */
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* ========================
+       DEBUG
+    ======================== */
+    "sourceMap": true,
+
+    /* ========================
+       DECORATORS (caso use DI)
+    ======================== */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+  "include": [
+    "src"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ]
+}
